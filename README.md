@@ -29,9 +29,12 @@ A web-based production planning tool that converts demand and capacity data into
 ```
 
 ## Setup & Run
+Run these commands in a new terminal in the project folder -
 ```bash
 pip install -r requirements.txt
+
 python -m uvicorn main:app --reload
+
 Open in browser:
 
 http://localhost:8000
