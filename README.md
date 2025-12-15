@@ -18,7 +18,7 @@ A web-based production planning tool that converts demand and capacity data into
 ### Project Structure
 
 ```bash
-.
+
 ├── main.py          # FastAPI backend
 ├── logic.py         # Allocation & planning logic
 ├── index.html       # Frontend UI
@@ -26,7 +26,7 @@ A web-based production planning tool that converts demand and capacity data into
 ├── script.js        # Frontend logic
 └── requirements.txt # Python dependencies
 
-
+```
 
 ## Setup & Run
 ```bash
