@@ -1,4 +1,4 @@
-# Sewing Plan Optimizer AI
+# Load Optimizer and Sewing Plan Generator for HBI Inc. 
 
 A web-based production planning tool that converts demand and capacity data into an optimized sewing plan using intelligent allocation logic.
 
