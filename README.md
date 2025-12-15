@@ -15,17 +15,18 @@ A web-based production planning tool that converts demand and capacity data into
 - **Frontend:** HTML, CSS, JavaScript, Chart.js  
 - **Data:** Excel (.xlsx)
 
-## Project Structure
-.
-├── main.py # FastAPI backend
-├── logic.py # Allocation & planning logic
-├── index.html # Frontend UI
-├── style.css # UI styling
-├── script.js # Frontend logic
-├── requirements.txt # Python dependencies
+### Project Structure
 
-css
-Copy code
+```bash
+.
+├── main.py          # FastAPI backend
+├── logic.py         # Allocation & planning logic
+├── index.html       # Frontend UI
+├── style.css        # UI styling
+├── script.js        # Frontend logic
+└── requirements.txt # Python dependencies
+
+
 
 ## Setup & Run
 ```bash
