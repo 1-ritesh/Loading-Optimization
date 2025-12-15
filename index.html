@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewing Plan Optimizer AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar glass">
+        <div class="logo">
+            <div class="logo-icon">AI</div>
+            <span>Sewing<span class="text-accent">Plan</span></span>
+        </div>
+        <div class="nav-actions">
+            <button id="new-plan-btn" class="btn-text hidden">
+                <i data-lucide="refresh-cw"></i> New Plan
+            </button>
+            <button id="download-template-btn" class="btn-glass">
+                <i data-lucide="download"></i> Template
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero-section" class="hero-container">
+            <div class="hero-bg-glow"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Production <span class="text-accent text-glow">Intelligence</span></h1>
+                <p class="hero-subtitle">Transform your manufacturing workflow with intelligent demand forecasting and
+                    resource allocation</p>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <div class="feature-card glass">
+                        <div class="feature-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3>Smart Allocation</h3>
+                        <p>Optimizes work distribution across production lines</p>
+                    </div>
+                    <div class="feature-card glass">
+                        <div class="feature-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h3>Efficiency Boost</h3>
+                        <p>Maximizes capacity utilization & reduces idle time</p>
+                    </div>
+                    <div class="feature-card glass">
+                        <div class="feature-icon">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <h3>Visual Analytics</h3>
+                        <p>Real-time insights with interactive dashboards</p>
+                    </div>
+                </div>
+
+                <div id="drop-zone" class="drop-zone glass">
+                    <input type="file" id="file-input" accept=".xlsx, .xls" hidden>
+                    <div id="upload-content">
+                        <div class="upload-icon-circle">
+                            <i data-lucide="upload" class="upload-icon"></i>
+                        </div>
+                        <h3>Drag & Drop Operations Data</h3>
+                        <p>or click to browse files (.xlsx format)</p>
+                    </div>
+                    <div id="loading-content" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Analyzing Data Patterns...</p>
+                    </div>
+                    <div id="error-message" class="error-message hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard-section" class="dashboard-container hidden">
+
+            <!--Stats Overview -->
+            <div class="stats-overview">
+                <div class="stat-card glass" id="stat-demand">
+                    <div class="stat-icon demand">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Demand</p>
+                        <p class="stat-value" id="stat-demand-value">0</p>
+                        <p class="stat-unit">units</p>
+                    </div>
+                </div>
+                <div class="stat-card glass" id="stat-efficiency">
+                    <div class="stat-icon efficiency">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Avg. Efficiency</p>
+                        <p class="stat-value" id="stat-efficiency-value">0%</p>
+                        <p class="stat-unit">optimization</p>
+                    </div>
+                </div>
+                <div class="stat-card glass" id="stat-utilization">
+                    <div class="stat-icon utilization">
+                        <i data-lucide="gauge"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Capacity Used</p>
+                        <p class="stat-value" id="stat-utilization-value">0%</p>
+                        <p class="stat-unit">of total capacity</p>
+                    </div>
+                </div>
+                <div class="stat-card glass" id="stat-score">
+                    <div class="stat-icon score">
+                        <i data-lucide="trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Model Score</p>
+                        <p class="stat-value" id="stat-score-value">0%</p>
+                        <p class="stat-unit">performance</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card glass">
+                    <h3>Capacity Utilization</h3>
+                    <canvas id="capacityChart"></canvas>
+                </div>
+                <div class="chart-card glass">
+                    <h3>Efficiency Distribution</h3>
+                    <canvas id="efficiencyChart"></canvas>
+                </div>
+                <!-- NEW: Weekly Allocation by Group -->
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h3>Weekly Allocation by Group</h3>
+                        <select id="group-select" class="chart-select"></select>
+                    </div>
+                    <canvas id="weeklyGroupChart"></canvas>
+                </div>
+            </div>
+
+            <!-- KPI Table -->
+            <div class="table-section glass">
+                <div class="section-header">
+                    <h2><i data-lucide="bar-chart-2"></i> Key Performance Indicators</h2>
+                </div>
+                <div class="table-container">
+                    <table id="kpi-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Allocation Summary -->
+            <div class="table-section glass" id="allocation-section">
+                <div class="section-header">
+                    <h2><i data-lucide="layout-grid"></i> Optimized Work Allocation Plan</h2>
+                    <div class="header-actions">
+                        <button id="download-summary-btn" class="btn-glass">
+                            <i data-lucide="download"></i> Download CSV
+                        </button>
+                        <button id="fullscreen-allocation-btn" class="btn-glass">
+                            <i data-lucide="maximize-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="allocation-table">
+                        <thead>
+                            <tr>
+                                <th>Group</th>
+                                <th>Average HC</th>
+                                <th>Efficiency (%)</th>
+                                <th>Weekly Capacity</th>
+                                <th>Total Capacity</th>
+                                <th>Allocated Units</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Demand Details Table -->
+            <div class="table-section glass" id="demand-section">
+                <div class="section-header">
+                    <h2><i data-lucide="package-search"></i> Demand Details</h2>
+                </div>
+                <div class="table-container scrollable-table">
+                    <table id="demand-table">
+                        <thead>
+                            <tr>
+                                <th>Style</th>
+                                <th>SELL_STYLE</th>
+                                <th>PACK_STYLE</th>
+                                <th>SELL_COLOR</th>
+                                <th>SELL_SIZE</th>
+                                <th>Demand Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detailed Production Plan -->
+            <div class="table-section glass" id="detailed-section">
+                <div class="section-header">
+                    <h2><i data-lucide="calendar-range"></i> Detailed Production Plan</h2>
+                    <div class="header-actions">
+                        <div class="week-filters-container">
+                            <button id="week-scroll-left" class="btn-icon-sm">
+                                <i data-lucide="chevron-left"></i>
+                            </button>
+                            <div id="week-filters" class="week-filters-scroll">
+                                <!-- Filters injected by JS -->
+                            </div>
+                            <button id="week-scroll-right" class="btn-icon-sm">
+                                <i data-lucide="chevron-right"></i>
+                            </button>
+                        </div>
+                        <button id="download-plan-btn" class="btn-glass">
+                            <i data-lucide="download"></i> Download CSV
+                        </button>
+                        <button id="fullscreen-detailed-btn" class="btn-glass">
+                            <i data-lucide="maximize-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container scrollable-table">
+                    <table id="detailed-table">
+                        <thead>
+                            <tr>
+                                <th>Week</th>
+                                <th>Group</th>
+                                <th>Shift</th>
+                                <th>Style</th>
+                                <th>SELL_STYLE</th>
+                                <th>PACK_STYLE</th>
+                                <th>SELL_COLOR</th>
+                                <th>Allocated Qty</th>
+                                <th>Shift Cap</th>
+                                <th>HC</th>
+                                <th>Eff</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailed-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
