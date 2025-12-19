@@ -17,12 +17,6 @@ An intelligent production planning solution for garment manufacturing that optim
 - **Real-Time Analytics**: Interactive charts for efficiency, capacity utilization, and KPIs
 - **Bilingual Support**: Full English and Thai localization
 
-##  Performance Improvements
-
-- **17.7%** increase in weighted average efficiency vs. manual planning
-- **21.6%** improvement in capacity utilization
-- **100%** elimination of intra-week changeovers
-- **99.7%** reduction in planning time (from 18-24 hours to 3-5 minutes)
 
 ##  Project Structure
 
