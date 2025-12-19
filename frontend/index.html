@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Optimizer - AI Production Planning</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar glass">
+        <div class="logo">
+            <img src="hbi-logo.png" alt="HBI" class="logo-icon">
+            <span>Sewing<span class="text-accent">Plan</span></span>
+        </div>
+        <div class="nav-actions">
+            <button id="new-plan-btn" class="btn-text hidden">
+                <i data-lucide="refresh-cw"></i> <span data-translate="nav_new_plan">New Plan</span>
+            </button>
+            <button id="download-template-btn" class="btn-glass">
+                <i data-lucide="download"></i> <span data-translate="nav_template">Template</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero-section" class="hero-container">
+            <div class="hero-bg-glow"></div>
+            <div class="hero-content">
+                <h1 class="hero-title fade-in-once">Load <span class="text-accent text-glow">Optimizer</span></h1>
+                <p class="hero-subtitle fade-in-once" data-translate="hero_subtitle">AI-powered production planning that
+                    optimizes work allocation
+                    based on
+                    efficiency, capacity, and style-group affinity</p>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <div class="feature-card glass fade-in-once" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3 data-translate="feature_smart_allocation_title">Smart Allocation</h3>
+                        <p data-translate="feature_smart_allocation_desc">Optimizes work distribution across production
+                            lines</p>
+                    </div>
+                    <div class="feature-card glass fade-in-once" style="animation-delay: 0.4s;">
+                        <div class="feature-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h3 data-translate="feature_efficiency_boost_title">Efficiency Boost</h3>
+                        <p data-translate="feature_efficiency_boost_desc">Maximizes capacity utilization & reduces idle
+                            time</p>
+                    </div>
+                    <div class="feature-card glass fade-in-once" style="animation-delay: 0.6s;">
+                        <div class="feature-icon">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <h3 data-translate="feature_visual_analytics_title">Visual Analytics</h3>
+                        <p data-translate="feature_visual_analytics_desc">Real-time insights with interactive dashboards
+                        </p>
+                    </div>
+                </div>
+
+                <div id="drop-zone" class="drop-zone glass">
+                    <input type="file" id="file-input" accept=".xlsx, .xls" hidden>
+                    <div id="upload-content">
+                        <div class="upload-icon-circle">
+                            <i data-lucide="upload" class="upload-icon"></i>
+                        </div>
+                        <h3 data-translate="dropzone_title">Drag & Drop Operations Data</h3>
+                        <p data-translate="dropzone_subtitle">or click to browse files (.xlsx format)</p>
+                    </div>
+                    <div id="loading-content" class="hidden">
+                        <div class="spinner"></div>
+                        <p data-translate="loading_text">Analyzing Data Patterns...</p>
+                    </div>
+                    <div id="error-message" class="error-message hidden"></div>
+                </div>
+
+                <!-- Bugatti-Style About Section -->
+                <!-- Bugatti-Style About Section with Grid -->
+                <div class="about-section scroll-reveal">
+                    <div class="about-bg-blobs">
+                        <div class="blob blob-1"></div>
+                        <div class="blob blob-2"></div>
+                    </div>
+                    <div class="about-card-wrapper">
+                        <h2 class="classy-title" data-translate="project_vision_title">PROJECT VISION</h2>
+                        <div class="classy-text-main">
+                            <p data-translate="project_vision_text">Load Optimizer represents a paradigm shift in
+                                production planning. By leveraging advanced
+                                algorithms to analyze historical efficiency, capacity constraints, and style-group
+                                affinities,
+                                we transform complex allocation challenges into streamlined, data-driven decisions.</p>
+                        </div>
+
+                        <div class="about-grid">
+                            <!-- Card 1: Core Logic -->
+                            <div class="about-feature-card">
+                                <div class="card-image">
+                                    <img src="smart-logic.png" alt="Smart Logic">
+                                </div>
+                                <div class="card-content">
+                                    <h3 data-translate="vision_smart_logic_title"><i data-lucide="cpu"></i> Smart Logic
+                                    </h3>
+                                    <p data-translate="vision_smart_logic_desc">Our algorithm doesn't just fill quotas.
+                                        It intelligently matches styles to groups
+                                        based on
+                                        proven performance history, minimizing changeover losses and maximizing weekly
+                                        throughput.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Tech Stack -->
+                            <div class="about-feature-card">
+                                <div class="card-image">
+                                    <img src="modern-stack.png" alt="Modern Stack">
+                                </div>
+                                <div class="card-content">
+                                    <h3 data-translate="vision_modern_stack_title"><i data-lucide="code-2"></i> Modern
+                                        Stack</h3>
+                                    <p data-translate="vision_modern_stack_desc">Built on a robust Python FastAPI
+                                        backend for high-performance processing, paired
+                                        with
+                                        a
+                                        responsive, glassmorphic frontend utilizing modern CSS and vanilla JavaScript
+                                        for
+                                        efficiency.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Analytics -->
+                            <div class="about-feature-card">
+                                <div class="card-image">
+                                    <img src="deep-analytics.png" alt="Deep Analytics">
+                                </div>
+                                <div class="card-content">
+                                    <h3 data-translate="vision_deep_analytics_title"><i data-lucide="bar-chart-2"></i>
+                                        Deep Analytics</h3>
+                                    <p data-translate="vision_deep_analytics_desc">Beyond allocation, we provide
+                                        granular visibility into weekly efficiency trends,
+                                        helping
+                                        managers identify bottlenecks and optimize line performance in real-time.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4: Future Scope -->
+                            <div class="about-feature-card">
+                                <div class="card-image">
+                                    <img src="future-ready.png" alt="Future Ready">
+                                </div>
+                                <div class="card-content">
+                                    <h3 data-translate="vision_future_ready_title"><i data-lucide="zap"></i> Future
+                                        Ready</h3>
+                                    <p data-translate="vision_future_ready_desc">Designed for scalability, with a
+                                        roadmap including predictive machine learning
+                                        models
+                                        for
+                                        demand forecasting and real-time IoT integration for live production tracking.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="classy-footer">
+                            <p class="classy-credit" data-translate="credit_text">Built for HBI Inc.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="dashboard-section" class="dashboard-container hidden">
+
+            <!--Stats Overview -->
+            <div class="stats-overview">
+                <div class="stat-card glass" id="stat-demand">
+                    <div class="stat-icon demand">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label" data-translate="stat_total_demand">Total Demand</p>
+                        <p class="stat-value" id="stat-demand-value">0</p>
+                        <p class="stat-unit" data-translate="unit_units">units</p>
+                    </div>
+                </div>
+                <div class="stat-card glass" id="stat-efficiency">
+                    <div class="stat-icon efficiency">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label" data-translate="stat_avg_efficiency">Avg. Efficiency</p>
+                        <p class="stat-value" id="stat-efficiency-value">0%</p>
+                        <p class="stat-unit" data-translate="unit_optimization">optimization</p>
+                    </div>
+                </div>
+                <div class="stat-card glass" id="stat-utilization">
+                    <div class="stat-icon utilization">
+                        <i data-lucide="gauge"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label" data-translate="stat_capacity_used">Capacity Used</p>
+                        <p class="stat-value" id="stat-utilization-value">0%</p>
+                        <p class="stat-unit" data-translate="unit_capacity">of total capacity</p>
+                    </div>
+                </div>
+                <div class="stat-card glass" id="stat-score">
+                    <div class="stat-icon score">
+                        <i data-lucide="trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label" data-translate="stat_model_score">Model Score</p>
+                        <p class="stat-value" id="stat-score-value">0%</p>
+                        <p class="stat-unit" data-translate="unit_performance">performance</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card glass">
+                    <h3 data-translate="chart_capacity_utilization">Capacity Utilization</h3>
+                    <canvas id="capacityChart"></canvas>
+                </div>
+                <div class="chart-card glass">
+                    <h3 data-translate="chart_efficiency_distribution">Efficiency Distribution</h3>
+                    <canvas id="efficiencyChart"></canvas>
+                </div>
+                <!-- NEW: Weekly Allocation by Group -->
+                <div class="chart-card glass">
+                    <div class="chart-header">
+                        <h3 data-translate="chart_weekly_efficiency">Weekly Efficiency by Group</h3>
+                        <select id="group-select" class="chart-select"></select>
+                    </div>
+                    <canvas id="weeklyGroupChart"></canvas>
+                </div>
+            </div>
+
+            <!-- KPI Table -->
+            <div class="table-section glass">
+                <div class="section-header">
+                    <h2><i data-lucide="bar-chart-2"></i> <span data-translate="section_kpi">Key Performance
+                            Indicators</span></h2>
+                </div>
+                <div class="table-container">
+                    <table id="kpi-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="th_metric">Metric</th>
+                                <th data-translate="th_value">Value</th>
+                                <th data-translate="th_unit">Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Allocation Summary -->
+            <div class="table-section glass" id="allocation-section">
+                <div class="section-header collapsible-header" data-target="allocation-table-container">
+                    <h2>
+                        <i data-lucide="chevron-right" class="toggle-icon"></i>
+                        <i data-lucide="layout-grid"></i>
+                        <span data-translate="section_allocation_plan">View Optimized Work Allocation Plan</span>
+                    </h2>
+                    <div class="header-actions">
+                        <button id="download-summary-btn" class="btn-glass">
+                            <i data-lucide="download"></i> <span data-translate="btn_download_csv">Download CSV</span>
+                        </button>
+                        <button id="fullscreen-allocation-btn" class="btn-glass">
+                            <i data-lucide="maximize-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container collapsible-content" id="allocation-table-container" style="display: none;">
+                    <table id="allocation-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="th_group">Group</th>
+                                <th data-translate="th_avg_hc">Average HC</th>
+                                <th data-translate="th_eff_pct">Efficiency (%)</th>
+                                <th data-translate="th_weekly_cap">Weekly Capacity</th>
+                                <th data-translate="th_total_cap">Total Capacity</th>
+                                <th data-translate="th_allocated_units">Allocated Units</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Demand Details Table -->
+            <div class="table-section glass" id="demand-section">
+                <div class="section-header collapsible-header" data-target="demand-table-container">
+                    <h2>
+                        <i data-lucide="chevron-right" class="toggle-icon"></i>
+                        <i data-lucide="package-search"></i>
+                        <span data-translate="section_demand_details">View Demand Details</span>
+                    </h2>
+                </div>
+                <div class="table-container scrollable-table collapsible-content" id="demand-table-container"
+                    style="display: none;">
+                    <table id="demand-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="th_style">Style</th>
+                                <th data-translate="th_sell_style">SELL_STYLE</th>
+                                <th data-translate="th_pack_style">PACK_STYLE</th>
+                                <th data-translate="th_sell_color">SELL_COLOR</th>
+                                <th data-translate="th_sell_size">SELL_SIZE</th>
+                                <th data-translate="th_demand_qty">Demand Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detailed Production Plan -->
+            <div class="table-section glass" id="detailed-section">
+                <div class="section-header">
+                    <div class="header-main-info">
+                        <h2><i data-lucide="calendar-range"></i> <span data-translate="section_detailed_plan">Detailed
+                                Production Plan</span></h2>
+                        <div id="planning-horizon-info" class="planning-horizon-badge">
+                            <i data-lucide="calendar"></i>
+                            <span data-translate="planning_horizon">Planning Horizon</span>: <span
+                                id="horizon-weeks">-</span> weeks
+                        </div>
+                    </div>
+                    <div class="header-right-side">
+                        <div class="detailed-plan-filters">
+                            <div class="filter-group">
+                                <label><i data-lucide="calendar"></i> <span
+                                        data-translate="filter_week">Week</span></label>
+                                <select id="filter-week" class="glass-select">
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label><i data-lucide="users"></i> <span
+                                        data-translate="filter_group">Group</span></label>
+                                <select id="filter-group" class="glass-select">
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label><i data-lucide="shirt"></i> <span
+                                        data-translate="filter_style">Style</span></label>
+                                <select id="filter-style" class="glass-select">
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="header-actions-group">
+                            <button id="download-plan-btn" class="btn-glass" title="Download CSV">
+                                <i data-lucide="download"></i>
+                            </button>
+                            <button id="fullscreen-detailed-btn" class="btn-glass" title="Fullscreen">
+                                <i data-lucide="maximize-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container scrollable-table">
+                    <table id="detailed-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th data-translate="th_week">Week</th>
+                                <th data-translate="th_group">Group</th>
+                                <th data-translate="th_shift">Shift</th>
+                                <th data-translate="th_style">Style</th>
+                                <th data-translate="th_sell_style">SELL_STYLE</th>
+                                <th data-translate="th_pack_style">PACK_STYLE</th>
+                                <th data-translate="th_sell_color">SELL_COLOR</th>
+                                <th data-translate="th_sell_size">SELL_SIZE</th>
+                                <th data-translate="th_sell_pack">SELL_PACK</th>
+                                <th data-translate="th_primary_dc">PRIMARY_DC</th>
+                                <th data-translate="th_allocated_qty">Allocated Qty</th>
+                                <th data-translate="th_shift_cap">Shift Capacity</th>
+                                <th data-translate="th_hc">HC</th>
+                                <th data-translate="th_eff">Eff</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailed-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <div class="footer-branding">
+                <p class="hbi-brand" data-translate="footer_built_for">Built for HBI Inc.</p>
+            </div>
+
+            <div class="language-selector-container">
+                <span class="lang-heading" data-translate="footer_language">LANGUAGE</span>
+                <div class="lang-options">
+                    <button class="lang-btn active">English</button>
+                    <button class="lang-btn">ไทย (Thai)</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
