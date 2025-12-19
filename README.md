@@ -61,7 +61,7 @@ pip install -r requirements.txt
 3. **Run the FastAPI server**
 ```bash
 cd backend
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn main:app --reload 
 ```
 
 4. **Access the application**
