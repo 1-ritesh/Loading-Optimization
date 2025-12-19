@@ -1,4 +1,4 @@
-# 🏭 AI-Powered Production Planning Optimization System
+#  AI-Powered Production Planning Optimization System
 
 An intelligent production planning solution for garment manufacturing that optimizes work allocation using a two-phase algorithm combining affinity-based matching with greedy optimization.
 
@@ -6,7 +6,7 @@ An intelligent production planning solution for garment manufacturing that optim
 ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
-## 🌟 Features
+##  Features
 
 - **Two-Phase Allocation Algorithm**: Combines affinity-based priority matching with greedy fallback
 - **Zero-Changeover Scheduling**: Assigns one style per group per week across all shifts
@@ -17,14 +17,14 @@ An intelligent production planning solution for garment manufacturing that optim
 - **Real-Time Analytics**: Interactive charts for efficiency, capacity utilization, and KPIs
 - **Bilingual Support**: Full English and Thai localization
 
-## 📊 Performance Improvements
+##  Performance Improvements
 
 - **17.7%** increase in weighted average efficiency vs. manual planning
 - **21.6%** improvement in capacity utilization
 - **100%** elimination of intra-week changeovers
 - **99.7%** reduction in planning time (from 18-24 hours to 3-5 minutes)
 
-## 🏗️ Project Structure
+##  Project Structure
 
 ```
 Loading-Optimization/
@@ -44,7 +44,7 @@ Loading-Optimization/
 └── data/                 # Data directory (gitignored)
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -75,7 +75,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 - API docs: http://localhost:8000/docs
 - Streamlit (alternative): `streamlit run backend/streamlit_app.py`
 
-## 📖 Usage
+##  Usage
 
 ### Web Interface
 
@@ -107,7 +107,7 @@ print(f"Total Allocated: {result['kpi']['total_allocated']}")
 print(f"Efficiency: {result['kpi']['weighted_avg_eff']}%")
 ```
 
-## 🔬 Algorithm Overview
+##  Algorithm Overview
 
 ### Two-Phase Allocation
 
@@ -126,7 +126,7 @@ print(f"Efficiency: {result['kpi']['weighted_avg_eff']}%")
 - Distributes work across all 12 shifts evenly
 - Eliminates setup time losses
 
-## 📈 System Requirements
+##  System Requirements
 
 | Component | Requirement |
 |-----------|-------------|
@@ -136,39 +136,33 @@ print(f"Efficiency: {result['kpi']['weighted_avg_eff']}%")
 | Disk Space | 500 MB |
 | Browser | Chrome 90+, Firefox 88+, Safari 14+ |
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **Backend**: Python, FastAPI, Pandas, NumPy
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
 - **Visualization**: Chart.js, Plotly
 - **Deployment**: Uvicorn, Docker-ready
 
-## 📚 Documentation
+##  Documentation
 
 Complete technical documentation is available in the `docs/` folder:
 - [Project Report (Markdown)](docs/PROJECT_REPORT.md)
 - [Project Report (LaTeX)](docs/PROJECT_REPORT.tex)
 - [Architecture Diagram](docs/architecture_diagram.png)
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👤 Author
 
-**Anish Naphade**
-- Developed for HanesBrands Inc.
-- Production Optimization Division
-
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - HanesBrands production planning team for domain expertise and data
 - Open-source community for FastAPI, Pandas, Streamlit, and related tools
 
 ---
 
-**Built with ❤️ for HanesBrands Inc.**
