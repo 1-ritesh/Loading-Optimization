@@ -1,4 +1,4 @@
-#  AI-Powered Production Planning Optimization System
+#  Load Optimizer and Production Plan Generator
 
 An intelligent production planning solution for garment manufacturing that optimizes work allocation using a two-phase algorithm combining affinity-based matching with greedy optimization.
 
